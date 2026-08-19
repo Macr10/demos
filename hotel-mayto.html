@@ -1,0 +1,860 @@
+<meta name="robots" content="noindex,nofollow">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hotel MAYTO — Playa Virgen · Jalisco, México</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#020C12;--deep:#051520;--surface:rgba(255,255,255,.06);
+  --gold:#F0B429;--gold2:#FFD166;--gold-glow:rgba(240,180,41,.4);
+  --teal:#00E5D4;--pearl:#FFF8EE;--muted:rgba(255,248,238,.55);
+  --border:rgba(240,180,41,.3);
+  --coral:#FF6B47;--sky:#0ABFDF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--pearl);overflow-x:hidden;padding-bottom:80px}
+
+/* ── PRELOADER ── */
+#preloader{
+  position:fixed;inset:0;z-index:99999;
+  background:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;
+  transition:opacity .8s ease,visibility .8s ease;
+}
+#preloader.done{opacity:0;visibility:hidden}
+.pre-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.5rem;font-weight:300;letter-spacing:.25em;
+  color:var(--pearl);text-transform:uppercase;
+}
+.pre-logo em{color:var(--gold);font-style:normal}
+.pre-sub{font-size:.7rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.pre-bar{width:160px;height:1px;background:rgba(255,255,255,.1);position:relative;overflow:hidden}
+.pre-bar::after{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+  animation:pre-load 1.4s ease-in-out infinite;
+}
+@keyframes pre-load{0%{left:-100%}100%{left:100%}}
+
+/* ── UTILS ── */
+.serif{font-family:'Cormorant Garamond',serif}
+.container{max-width:1140px;margin:0 auto;padding:0 32px}
+.tc{text-align:center}
+.label-tag{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+}
+.label-tag::before,.label-tag::after{content:'';width:28px;height:1px;background:linear-gradient(to right,transparent,var(--gold))}
+.label-tag::after{background:linear-gradient(to left,transparent,var(--gold))}
+.gold-rule{display:block;width:50px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:18px auto 0}
+.grad-gold{background:linear-gradient(135deg,var(--gold2),var(--gold) 50%,#9A7028);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ── BUTTONS ── */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Inter',sans-serif;font-weight:600;font-size:.82rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:17px 40px;border-radius:2px;text-decoration:none;border:none;cursor:pointer;
+  transition:all .3s ease;
+}
+.btn-gold{
+  background:linear-gradient(135deg,#FFD166,#F0B429,#E8960A);color:#030A0E;
+  animation:cta-glow 2.5s ease-in-out infinite;
+}
+@keyframes cta-glow{0%,100%{box-shadow:0 6px 35px rgba(240,180,41,.5)}50%{box-shadow:0 6px 60px rgba(240,180,41,.75)}}
+.btn-gold:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 14px 55px rgba(201,168,76,.6)!important;animation:none}
+.btn-outline{background:transparent;color:var(--pearl);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(10px)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+
+/* ═══════════════════════════ HERO ═══════════════════════════ */
+#hero{position:relative;height:100vh;min-height:680px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+
+/* VIDEO BG */
+.hero-video-wrap{position:absolute;inset:0;overflow:hidden;z-index:0}
+#hero-video{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);min-width:100%;min-height:100%;width:auto;height:auto;object-fit:cover}
+.hero-video-wrap iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(1.6);width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;pointer-events:none;border:none}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(2,8,15,.6) 0%,rgba(2,8,15,.3) 40%,rgba(2,8,15,.65) 75%,rgba(2,8,15,.95) 100%)}
+/* fallback photo if video fails */
+.hero-photo-fallback{position:absolute;inset:0;background:url('https://static.wixstatic.com/media/c8bb80_6233dfe52e2b467a93d2a7301a01b67df000.jpg') center/cover;animation:hero-zoom 18s ease-in-out infinite alternate;z-index:0}
+@keyframes hero-zoom{0%{transform:scale(1.05)}100%{transform:scale(1.12) translateY(-1%)}  }
+
+/* PALMERAS SVG */
+.palm{position:absolute;bottom:0;z-index:2;pointer-events:none}
+.palm-l{left:-10px;animation:sway-l 5s ease-in-out infinite alternate}
+.palm-r{right:-10px;animation:sway-r 6s ease-in-out infinite alternate}
+@keyframes sway-l{0%{transform:rotate(-4deg)}100%{transform:rotate(1deg)}}
+@keyframes sway-r{0%{transform:rotate(3deg)}100%{transform:rotate(-2deg)}}
+
+/* OLAS HERO */
+.hero-waves{position:absolute;bottom:-2px;left:0;right:0;z-index:3;pointer-events:none;height:130px;overflow:hidden}
+.wl{position:absolute;bottom:0;width:200%;height:100%}
+.wl svg{width:100%;height:100%}
+.wl1{animation:wm 10s linear infinite;opacity:.7}
+.wl2{animation:wm 15s linear infinite reverse;opacity:.85}
+.wl3{animation:wm 8s linear infinite;opacity:1}
+@keyframes wm{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SOCIAL PROOF BADGE */
+.hero-social{
+  display:inline-flex;align-items:center;gap:18px;
+  background:rgba(2,8,15,.5);border:1px solid rgba(201,168,76,.25);
+  backdrop-filter:blur(16px);border-radius:2px;
+  padding:10px 22px;margin-bottom:24px;
+  font-size:.75rem;font-weight:500;color:rgba(255,255,255,.8);
+  animation:fade-up .8s ease both;
+}
+.sp-stars{color:var(--gold);letter-spacing:2px;font-size:.9rem}
+.sp-sep{color:rgba(255,255,255,.2);font-size:1rem}
+
+.hero-chip{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);
+  backdrop-filter:blur(16px);border-radius:2px;
+  padding:9px 22px;margin-bottom:28px;
+  font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  animation:fade-up .8s .1s ease both;
+}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:live-pulse 2s infinite}
+@keyframes live-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.8)}}
+
+.hero-content{position:relative;z-index:4;max-width:920px;padding:0 24px}
+
+#hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,9vw,7.5rem);
+  font-weight:300;line-height:1.02;letter-spacing:-.01em;color:#fff;
+  text-shadow:0 4px 40px rgba(0,0,0,.4);margin-bottom:8px;
+  animation:hero3d .9s .15s cubic-bezier(.4,0,.2,1) both;
+}
+@keyframes hero3d{from{opacity:0;transform:perspective(900px) rotateX(18deg) translateY(50px)}to{opacity:1;transform:perspective(900px) rotateX(0) translateY(0)}}
+#hero h1 em{font-style:italic;font-weight:600;background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.hero-divline{display:flex;align-items:center;gap:16px;justify-content:center;margin:22px 0;animation:fade-up .8s .3s ease both}
+.hero-divline span{width:70px;height:1px;background:rgba(201,168,76,.4)}
+.hero-divline em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,.65)}
+
+.hero-sub{font-size:clamp(.93rem,2vw,1.12rem);font-weight:300;color:rgba(255,255,255,.75);line-height:1.85;max-width:560px;margin:0 auto 12px;animation:fade-up .8s .4s ease both}
+.hero-promise{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--gold);margin-bottom:44px;animation:fade-up .8s .5s ease both}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:40px;animation:fade-up .8s .6s ease both}
+
+/* URGENCY BADGE */
+.urgency-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,107,71,.18);border:1px solid rgba(255,107,71,.45);
+  border-radius:2px;padding:8px 18px;margin-bottom:20px;
+  font-size:.72rem;font-weight:600;color:#FF6B55;letter-spacing:.06em;
+  animation:fade-up .8s .65s ease both;
+}
+.urgency-dot{width:6px;height:6px;border-radius:50%;background:#FF6B55;animation:live-pulse 1.5s infinite}
+
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;animation:fade-up .8s .7s ease both}
+.hbadge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:2px;padding:7px 16px;font-size:.72rem;color:rgba(255,255,255,.7)}
+
+.scroll-hint{position:absolute;bottom:145px;left:50%;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:8px;animation:fade-up 1s 1.5s ease both}
+.scroll-hint span{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.sbar{width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent);overflow:hidden;position:relative}
+.sbar::after{content:'';position:absolute;top:-100%;left:0;right:0;height:100%;background:var(--gold);animation:sdrop 1.8s ease-in-out infinite}
+@keyframes sdrop{0%{top:-100%}100%{top:100%}}
+@keyframes fade-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* ═══════════════ MARQUEE ═══════════════ */
+.marquee-bar{background:linear-gradient(90deg,#F0B429,#FFD166,#F0B429);padding:12px 0;overflow:hidden;position:relative;z-index:1}
+.mtrack{display:flex;width:max-content;animation:marquee 22s linear infinite}
+.mitem{display:flex;align-items:center;gap:14px;padding:0 26px;font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ink);white-space:nowrap;letter-spacing:.04em}
+.mdot{color:rgba(2,8,12,.3);font-size:1.2rem}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ═══════════════ SECCIÓN BASE ═══════════════ */
+.section{padding:110px 0;position:relative;z-index:1}
+.sec-head{text-align:center;margin-bottom:64px}
+.sec-head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;line-height:1.15;letter-spacing:-.01em;margin:18px 0 16px}
+.sec-head p{color:var(--muted);font-size:.97rem;font-weight:300;max-width:440px;margin:0 auto;line-height:1.85}
+.wave-sep{line-height:0;position:relative;z-index:1}
+.wave-sep svg{display:block;width:100%}
+
+/* ═══════════════ GALERÍA ═══════════════ */
+#galeria{background:var(--deep);padding:80px 0}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:3px}
+.gp{background-size:cover;background-position:center;position:relative;overflow:hidden;cursor:pointer;transition:transform .4s ease}
+.gp::after{content:'';position:absolute;inset:0;background:rgba(2,8,15,.5);opacity:0;transition:opacity .35s}
+.gp:hover{transform:scale(1.02);z-index:2}
+.gp:hover::after{opacity:1}
+.gp.tall{grid-row:span 2}.gp.wide{grid-column:span 2}
+.gp-label{position:absolute;bottom:14px;left:14px;z-index:3;font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);opacity:0;transition:opacity .3s;transform:translateY(4px);transition:all .3s}
+.gp:hover .gp-label{opacity:1;transform:translateY(0)}
+.img-fallback{background-color:#0A1E2A}
+
+/* ═══════════════ PROBLEMA ═══════════════ */
+#problema{background:var(--ink)}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.prob-left h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.4rem);font-weight:300;line-height:1.18;letter-spacing:-.01em;margin:16px 0 24px}
+.prob-left p{color:var(--muted);font-size:.95rem;line-height:1.9;font-weight:300;margin-bottom:16px}
+.prob-quote{padding:22px 26px;background:rgba(201,168,76,.07);border:1px solid var(--border);border-radius:2px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--pearl);line-height:1.6;position:relative;margin-top:28px}
+.prob-quote::before{content:'\201C';position:absolute;top:-12px;left:16px;font-size:4rem;color:var(--gold);opacity:.25;font-family:'Cormorant Garamond',serif;line-height:1}
+.chaos-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chaos-item{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:2px;padding:16px;display:flex;align-items:center;gap:12px;font-size:.85rem;color:var(--muted);transition:all .25s}
+.chaos-item:hover{background:rgba(255,80,60,.06);border-color:rgba(255,80,60,.2);color:var(--pearl)}
+.xi{width:24px;height:24px;border-radius:2px;background:rgba(255,80,60,.1);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#FF5040;flex-shrink:0;font-weight:700}
+
+/* ═══════════════ EXPERIENCIAS ═══════════════ */
+#experiencias{background:var(--deep);padding-top:60px;padding-bottom:0}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.exp-card{position:relative;height:420px;overflow:hidden;cursor:pointer}
+.exp-card.tall{height:580px}
+.exp-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.exp-card:hover .exp-bg{transform:scale(1.07)}
+.exp-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(2,8,15,.9) 0%,rgba(2,8,15,.35) 55%,rgba(2,8,15,.1) 100%);transition:background .4s}
+.exp-card:hover .exp-ov{background:linear-gradient(to top,rgba(2,8,15,.95) 0%,rgba(2,8,15,.6) 60%,rgba(2,8,15,.25) 100%)}
+.exp-content{position:absolute;bottom:0;left:0;right:0;padding:32px 28px;z-index:2}
+.exp-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);border-radius:2px;padding:3px 11px;font-size:.63rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:11px}
+.exp-icon{font-size:1.9rem;margin-bottom:10px;display:block}
+.exp-content h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:#fff;margin-bottom:8px;line-height:1.2}
+.exp-content p{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.7;font-weight:300;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s ease,opacity .4s}
+.exp-card:hover .exp-content p{max-height:180px;opacity:1}
+
+/* ═══════════════ CTA BAND ═══════════════ */
+.cta-band{padding:90px 0;text-align:center;position:relative;overflow:hidden}
+.cta-band-bg{position:absolute;inset:0;background-image:url('https://static.wixstatic.com/media/c8bb80_d8b4214decec4e12aeb0e75b2638bc36~mv2.jpg');background-size:cover;background-position:center;background-attachment:fixed}
+.cta-band-ov{position:absolute;inset:0;background:rgba(2,8,15,.8)}
+.cta-band-inner{position:relative;z-index:1}
+.cta-band h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:300;line-height:1.2;color:#fff;margin-bottom:32px}
+.cta-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+
+/* ═══════════════ DIFERENCIADOR ═══════════════ */
+#diferenciador{background:var(--ink)}
+.dif-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dif-card{border-radius:2px;padding:46px 38px}
+.dif-bad{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05)}
+.dif-good{background:linear-gradient(150deg,rgba(201,168,76,.13),rgba(201,168,76,.04));border:1px solid var(--border);position:relative;overflow:hidden}
+.dif-good::before{content:'';position:absolute;top:-80px;right:-80px;width:240px;height:240px;background:radial-gradient(circle,rgba(201,168,76,.07),transparent 65%)}
+.dif-lbl{font-size:.67rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:26px;display:block}
+.dif-bad .dif-lbl{color:var(--muted)}.dif-good .dif-lbl{color:var(--gold)}
+.dif-row{display:flex;align-items:flex-start;gap:13px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.dif-row:last-child{border:none;padding-bottom:0}
+.dif-ico{width:26px;height:26px;border-radius:2px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700}
+.bad-i{background:rgba(255,255,255,.05);color:var(--muted)}.good-i{background:rgba(201,168,76,.15);color:var(--gold)}
+.dif-bad .dif-row p{color:var(--muted);font-size:.9rem;font-weight:300}.dif-good .dif-row p{color:var(--pearl);font-size:.9rem;font-weight:500}
+
+/* ═══════════════ BENEFICIOS ═══════════════ */
+#beneficios{background:var(--deep)}
+.ben-layout{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.ben-photo{height:580px;border-radius:2px;background-image:url('https://static.wixstatic.com/media/c8bb80_a47f49c97a00406e91dc9943fca5f12df001.jpg');background-size:cover;background-position:center;position:relative;overflow:hidden}
+.ben-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--deep))}
+.ben-right h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.4rem);font-weight:300;line-height:1.15;letter-spacing:-.01em;margin:16px 0 36px}
+.ben-list{display:flex;flex-direction:column;gap:2px}
+.ben-item{display:flex;align-items:center;gap:18px;padding:18px 20px;border-radius:2px;border:1px solid transparent;font-size:.93rem;color:var(--muted);font-weight:300;transition:all .3s ease;cursor:default}
+.ben-item:hover{background:rgba(201,168,76,.06);border-color:var(--border);color:var(--pearl);transform:translateX(8px)}
+.ben-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:rgba(201,168,76,.18);flex-shrink:0;width:26px;text-align:right;line-height:1;transition:color .3s}
+.ben-item:hover .ben-num{color:var(--gold)}
+
+/* ═══════════════ HABITACIONES ═══════════════ */
+#rooms{background:var(--ink)}
+.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:56px}
+.room-card{position:relative;height:340px;overflow:hidden}
+.room-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s ease}
+.room-card:hover .room-bg{transform:scale(1.06)}
+.room-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(2,8,15,.88),rgba(2,8,15,.2))}
+.room-lbl{position:absolute;bottom:22px;left:22px;right:22px;z-index:2}
+.room-lbl span{display:block;font-size:.63rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.room-lbl h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:#fff;line-height:1.2}
+
+/* ═══════════════ PRECIO ═══════════════ */
+#precio{background:var(--deep)}
+.precio-wrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
+.precio-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:40px 32px;text-align:center;position:relative;overflow:hidden;transition:all .35s}
+.precio-card:hover{border-color:var(--border);background:rgba(201,168,76,.05);transform:translateY(-4px)}
+.precio-card.featured{background:linear-gradient(150deg,rgba(201,168,76,.14),rgba(201,168,76,.05));border-color:var(--border)}
+.precio-card.featured::before{content:'Más Popular';position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--ink);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 16px;border-radius:0 0 4px 4px}
+.precio-tier{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.precio-val{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:var(--pearl);line-height:1;margin-bottom:6px}
+.precio-cur{font-size:.75rem;color:var(--muted);margin-bottom:20px}
+.precio-desc{font-size:.85rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:28px}
+.precio-inc{list-style:none;margin-bottom:28px;text-align:left}
+.precio-inc li{display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--muted);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.precio-inc li:last-child{border:none}
+.pchk{width:18px;height:18px;border-radius:2px;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;font-size:.6rem;color:var(--gold);flex-shrink:0}
+
+/* ═══════════════ TESTIMONIOS ═══════════════ */
+#testimonios{background:var(--ink)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:56px}
+.test-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:38px 30px;transition:all .35s}
+.test-card:hover{border-color:var(--border);background:rgba(201,168,76,.04);transform:translateY(-4px)}
+.tstar{display:flex;gap:4px;margin-bottom:20px}
+.star{width:13px;height:13px;background:var(--gold);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.test-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;line-height:1.75;color:var(--pearl);margin-bottom:24px}
+.test-author{font-size:.67rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.test-line{width:30px;height:1px;background:var(--border);margin-bottom:11px}
+
+/* ═══════════════ INSTAGRAM ═══════════════ */
+#instagram{background:var(--deep)}
+.ig-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-top:56px}
+.ig-item{position:relative;overflow:hidden;aspect-ratio:1;cursor:pointer;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+.ig-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:block}
+.ig-item:hover img{transform:scale(1.08)}
+.ig-over{position:absolute;inset:0;background:rgba(2,8,15,.6);opacity:0;transition:opacity .35s;display:flex;align-items:center;justify-content:center}
+.ig-item:hover .ig-over{opacity:1}
+.ig-icon{color:#fff;font-size:1.5rem}
+.ig-cta{text-align:center;margin-top:32px}
+.ig-handle{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:2px;padding:12px 28px;
+  color:var(--pearl);font-size:.85rem;font-weight:500;text-decoration:none;
+  transition:all .3s;
+}
+.ig-handle:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ═══════════════ MAPA / UBICACIÓN ═══════════════ */
+#ubicacion{background:var(--ink)}
+.ubic-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:480px}
+.ubic-map{position:relative;overflow:hidden}
+.ubic-map iframe{width:100%;height:100%;min-height:400px;border:none;filter:grayscale(60%) invert(5%) contrast(1.1)}
+.ubic-info{background:var(--deep);padding:60px 48px;display:flex;flex-direction:column;justify-content:center}
+.ubic-info h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;line-height:1.15;margin:16px 0 28px}
+.route-item{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.route-item:last-child{border:none;padding-bottom:0}
+.route-icon{width:42px;height:42px;border-radius:2px;background:rgba(201,168,76,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.route-text strong{display:block;font-size:.97rem;font-weight:500;color:var(--pearl);margin-bottom:3px}
+.route-text span{font-size:.8rem;color:var(--muted);font-weight:300}
+
+/* ═══════════════ OFERTA ═══════════════ */
+#oferta{background:var(--deep)}
+.oferta-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:48px}
+.inc-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:42px 38px}
+.inc-title{font-size:.67rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:block}
+.inc-row{display:flex;align-items:center;gap:13px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.93rem;color:var(--pearl);font-weight:300}
+.inc-row:last-child{border:none;padding-bottom:0}
+.inc-chk{width:22px;height:22px;border-radius:2px;flex-shrink:0;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;font-size:.68rem;color:var(--gold);font-weight:700}
+.bonus-card{background:linear-gradient(150deg,rgba(201,168,76,.15),rgba(201,168,76,.05));border:1px solid var(--border);padding:42px 38px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.bonus-card::before{content:'';position:absolute;bottom:-40px;right:-40px;width:210px;height:210px;background:radial-gradient(circle,rgba(201,168,76,.1),transparent 65%)}
+.bonus-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);padding:5px 13px;border-radius:2px;font-size:.67rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px;position:relative;z-index:1}
+.bonus-card h3{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:600;color:var(--pearl);line-height:1.25;margin-bottom:14px;position:relative;z-index:1}
+.bonus-card p{color:var(--muted);font-size:.9rem;line-height:1.8;font-weight:300;position:relative;z-index:1}
+.oferta-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;font-weight:300;color:var(--muted);text-align:center;margin-bottom:32px;line-height:1.9}
+
+/* ═══════════════ FAQ ═══════════════ */
+#faq{background:var(--ink)}
+.faq-inner{max-width:700px;margin:0 auto}
+details{border-bottom:1px solid rgba(255,255,255,.06)}
+summary{cursor:pointer;padding:21px 0;font-size:.95rem;font-weight:400;color:var(--pearl);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;transition:color .2s}
+summary:hover{color:var(--gold)}
+summary::-webkit-details-marker{display:none}
+.faq-ico{width:29px;height:29px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:.95rem;transition:all .25s}
+details[open] .faq-ico{transform:rotate(45deg);background:var(--gold);color:var(--ink)}
+details p{padding:0 0 20px;color:var(--muted);font-size:.93rem;line-height:1.85;font-weight:300}
+
+/* ═══════════════ CIERRE ═══════════════ */
+#cierre{position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 220px;overflow:hidden}
+.cierre-bg{position:absolute;inset:0;background-image:url('https://static.wixstatic.com/media/c8bb80_6233dfe52e2b467a93d2a7301a01b67df000.jpg');background-size:cover;background-position:center;animation:hero-zoom 18s ease-in-out infinite alternate}
+.cierre-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,8,15,.75),rgba(2,8,15,.65) 50%,rgba(2,8,15,.92) 100%)}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,.07);top:50%;left:50%}
+.r1{width:320px;height:320px;margin:-160px;animation:ring-out 5s ease-out infinite}
+.r2{width:520px;height:520px;margin:-260px;animation:ring-out 5s 1.5s ease-out infinite}
+.r3{width:720px;height:720px;margin:-360px;animation:ring-out 5s 3s ease-out infinite}
+@keyframes ring-out{0%{opacity:.8;transform:scale(.85)}100%{opacity:0;transform:scale(1.1)}}
+.cierre-waves{position:absolute;bottom:0;left:0;right:0;z-index:2;line-height:0}
+.cierre-inner{position:relative;z-index:3;max-width:820px;margin:0 auto}
+#cierre h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,7vw,5.8rem);font-weight:300;line-height:1.07;color:#fff;text-shadow:0 4px 40px rgba(0,0,0,.4);margin-bottom:24px;letter-spacing:-.01em}
+#cierre .sub{color:rgba(255,255,255,.6);font-size:1rem;font-weight:300;margin-bottom:52px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.9}
+.cierre-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:44px}
+.trust-row{display:flex;flex-wrap:wrap;gap:22px;justify-content:center}
+.titem{display:flex;align-items:center;gap:7px;font-size:.68rem;color:rgba(255,255,255,.33);letter-spacing:.08em;text-transform:uppercase}
+.tdot{width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.4}
+
+/* ═══════════════ STICKY + WA ═══════════════ */
+#sticky{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(2,8,15,.95);backdrop-filter:blur(24px) saturate(180%);border-top:1px solid rgba(201,168,76,.18);padding:13px 30px;display:flex;align-items:center;justify-content:space-between;gap:14px;transform:translateY(100%);transition:transform .5s cubic-bezier(.4,0,.2,1)}
+#sticky.show{transform:translateY(0)}
+.sleft{display:flex;align-items:center;gap:12px}
+.sdot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:live-pulse 2s infinite}
+.sname{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--pearl);letter-spacing:.04em}
+.sdesc{font-size:.72rem;color:var(--muted);margin-top:1px}
+.s-btn{padding:11px 26px;font-size:.78rem;border-radius:2px}
+#wa-btn{position:fixed;bottom:94px;right:22px;z-index:9998;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;animation:wa-float 3s ease-in-out infinite;transition:transform .2s}
+#wa-btn:hover{transform:scale(1.12);animation:none;box-shadow:0 6px 30px rgba(37,211,102,.6)}
+@keyframes wa-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+#wa-btn svg{width:29px;height:29px;fill:#fff}
+
+/* ═══════════════ REVEAL ═══════════════ */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* ═══════════════ RESPONSIVE ═══════════════ */
+@media(max-width:960px){
+  .prob-grid,.ben-layout,.dif-grid,.oferta-layout,.ubic-layout{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:200px}
+  .exp-grid,.rooms-grid,.test-grid,.ig-grid{grid-template-columns:1fr}
+  .exp-card,.exp-card.tall{height:320px}
+  .exp-content p{max-height:200px;opacity:1}
+  .precio-wrap{grid-template-columns:1fr}
+  .ben-photo{height:340px}
+}
+@media(max-width:600px){
+  .gallery-grid{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;align-items:center}
+  .sleft{display:none}
+  #wa-btn{bottom:88px;right:14px}
+  .cierre-btns{flex-direction:column;align-items:center}
+  .container{padding:0 18px}
+  .ig-grid{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ PRELOADER ════════ -->
+<div id="preloader">
+  <div class="pre-logo">M<em>A</em>YTO</div>
+  <div class="pre-sub">Cabo Corrientes · Jalisco · México</div>
+  <div class="pre-bar"></div>
+</div>
+
+<!-- ════════════════════════════════════
+     HERO — VIDEO REAL DE MAYTO
+════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-photo-fallback"></div>
+  <div class="hero-video-wrap">
+    <iframe src="https://www.youtube.com/embed/OCeEtLyqCz8?autoplay=1&mute=1&loop=1&playlist=OCeEtLyqCz8&controls=0&showinfo=0&rel=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&enablejsapi=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <!-- PALMERAS -->
+  <svg class="palm palm-l" width="160" height="460" viewBox="0 0 160 460" fill="none">
+    <path d="M80,460 Q78,370 76,290 Q74,220 80,168" stroke="rgba(10,30,10,0.8)" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <ellipse cx="78" cy="172" rx="4" ry="4" fill="rgba(10,40,10,0.7)"/>
+    <path d="M76,185 Q48,148 12,130 Q44,146 76,185" fill="rgba(5,45,15,0.65)"/>
+    <path d="M78,200 Q40,185 5,192 Q42,184 78,200" fill="rgba(5,45,15,0.6)"/>
+    <path d="M79,178 Q72,132 80,85 Q84,132 79,178" fill="rgba(5,45,15,0.65)"/>
+    <path d="M78,195 Q108,162 145,148 Q114,164 78,195" fill="rgba(5,45,15,0.6)"/>
+    <path d="M77,210 Q118,205 150,218 Q116,207 77,210" fill="rgba(5,45,15,0.55)"/>
+    <path d="M76,170 Q48,142 26,112 Q50,138 76,170" fill="rgba(5,50,15,0.55)"/>
+  </svg>
+  <svg class="palm palm-r" width="160" height="460" viewBox="0 0 160 460" fill="none">
+    <path d="M80,460 Q82,370 84,290 Q86,220 80,168" stroke="rgba(10,30,10,0.8)" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <ellipse cx="82" cy="172" rx="4" ry="4" fill="rgba(10,40,10,0.7)"/>
+    <path d="M84,185 Q112,148 148,130 Q116,146 84,185" fill="rgba(5,45,15,0.65)"/>
+    <path d="M82,200 Q120,185 155,192 Q118,184 82,200" fill="rgba(5,45,15,0.6)"/>
+    <path d="M81,178 Q88,132 80,85 Q76,132 81,178" fill="rgba(5,45,15,0.65)"/>
+    <path d="M82,195 Q52,162 15,148 Q46,164 82,195" fill="rgba(5,45,15,0.6)"/>
+    <path d="M83,210 Q42,205 10,218 Q44,207 83,210" fill="rgba(5,45,15,0.55)"/>
+    <path d="M84,170 Q112,142 134,112 Q110,138 84,170" fill="rgba(5,50,15,0.55)"/>
+  </svg>
+
+  <!-- OLAS ANIMADAS -->
+  <div class="hero-waves">
+    <div class="wl wl1"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0,65 C180,100 360,30 540,65 C720,100 900,30 1080,65 C1260,100 1440,30 1440,65 L1440,110 L0,110Z" fill="rgba(0,229,212,0.32)"/><path d="M1440,65 C1620,100 1800,30 1980,65 C2160,100 2340,30 2520,65 C2700,100 2880,30 2880,65 L2880,110 L1440,110Z" fill="rgba(0,229,212,0.32)"/></svg></div>
+    <div class="wl wl2"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0,50 C200,88 400,18 600,55 C800,92 1000,22 1200,58 C1320,78 1400,38 1440,52 L1440,110 L0,110Z" fill="rgba(10,191,223,0.42)"/><path d="M1440,50 C1640,88 1840,18 2040,55 C2240,92 2440,22 2640,58 C2760,78 2840,38 2880,52 L2880,110 L1440,110Z" fill="rgba(10,191,223,0.42)"/></svg></div>
+    <div class="wl wl3"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0,75 C240,45 480,105 720,68 C960,32 1200,95 1440,68 L1440,110 L0,110Z" fill="#020C12"/><path d="M1440,75 C1680,45 1920,105 2160,68 C2400,32 2640,95 2880,68 L2880,110 L1440,110Z" fill="#020C12"/></svg></div>
+  </div>
+
+  <div class="hero-content">
+    <!-- SOCIAL PROOF -->
+    <div class="hero-social">
+      <span class="sp-stars">★★★★★</span>
+      <span class="sp-sep">|</span>
+      <span>4.8 en Google</span>
+      <span class="sp-sep">·</span>
+      <span>TripAdvisor Excelente</span>
+      <span class="sp-sep">·</span>
+      <span>+126 reseñas</span>
+    </div>
+    <div class="hero-chip">
+      <span class="live-dot"></span>
+      Hotel MAYTO &nbsp;·&nbsp; Cabo Corrientes, Jalisco &nbsp;·&nbsp; Pacífico Mexicano
+    </div>
+    <h1>No todo Jalisco<br>termina en<br><em>Puerto Vallarta.</em></h1>
+    <div class="hero-divline"><span></span><em>9 km de playa virgen</em><span></span></div>
+    <p class="hero-sub">Entre el verde de la Sierra Madre y la energía turquesa del Pacífico emerge un rincón que casi nadie conoce — a solo 2 horas de Puerto Vallarta.</p>
+    <p class="hero-promise">"Aquí no vienes a correr. Vienes a respirar."</p>
+    <div class="urgency-badge">
+      <span class="urgency-dot"></span>
+      Alta temporada · Disponibilidad limitada para las próximas fechas
+    </div>
+    <div class="hero-btns">
+      <a href="https://wa.me/523312809285?text=Hola%2C%20me%20interesa%20reservar%20en%20Hotel%20MAYTO.%20%C2%BFTienen%20disponibilidad%3F" target="_blank" class="btn btn-gold">Reserva tu experiencia →</a>
+      <a href="#ubicacion" class="btn btn-outline">¿Cómo llegar?</a>
+    </div>
+    <div class="hero-badges">
+      <span class="hbadge">🐾 PET Friendly</span>
+      <span class="hbadge">✦ 100% Personalizado</span>
+      <span class="hbadge">🏖️ Playa virgen</span>
+      <span class="hbadge">💑 Parejas · Familias</span>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="sbar"></div><span>Scroll</span></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="mtrack">
+    <div class="mitem">9 km de Playa Virgen <span class="mdot">·</span></div>
+    <div class="mitem">Liberación de Tortugas <span class="mdot">·</span></div>
+    <div class="mitem">PET Friendly <span class="mdot">·</span></div>
+    <div class="mitem">Experiencias Personalizadas <span class="mdot">·</span></div>
+    <div class="mitem">2h de Puerto Vallarta <span class="mdot">·</span></div>
+    <div class="mitem">Pesca y Aventura <span class="mdot">·</span></div>
+    <div class="mitem">Privacidad Real <span class="mdot">·</span></div>
+    <div class="mitem">Pacífico Mexicano <span class="mdot">·</span></div>
+    <div class="mitem">9 km de Playa Virgen <span class="mdot">·</span></div>
+    <div class="mitem">Liberación de Tortugas <span class="mdot">·</span></div>
+    <div class="mitem">PET Friendly <span class="mdot">·</span></div>
+    <div class="mitem">Experiencias Personalizadas <span class="mdot">·</span></div>
+    <div class="mitem">2h de Puerto Vallarta <span class="mdot">·</span></div>
+    <div class="mitem">Pesca y Aventura <span class="mdot">·</span></div>
+    <div class="mitem">Privacidad Real <span class="mdot">·</span></div>
+    <div class="mitem">Pacífico Mexicano <span class="mdot">·</span></div>
+  </div>
+</div>
+
+<!-- ════════ GALERÍA REAL ════════ -->
+<section id="galeria" style="padding:70px 0;background:var(--deep)">
+  <div class="container"><div class="sec-head reveal"><span class="label-tag">El lugar</span><div class="gold-rule"></div><h2>Conoce <span class="grad-gold">MAYTO</span></h2><p>Fotos reales del hotel, la playa y las experiencias</p></div></div>
+  <div class="gallery-grid">
+    <div class="gp tall wide img-fallback reveal" style="background-image:url('https://static.wixstatic.com/media/c8bb80_6233dfe52e2b467a93d2a7301a01b67df000.jpg')"><span class="gp-label">Vista MAYTO</span></div>
+    <div class="gp img-fallback reveal d1" style="background-image:url('https://static.wixstatic.com/media/c8bb80_d8b4214decec4e12aeb0e75b2638bc36~mv2.jpg')"><span class="gp-label">9 km de playa virgen</span></div>
+    <div class="gp img-fallback reveal d2" style="background-image:url('https://static.wixstatic.com/media/c8bb80_a47f49c97a00406e91dc9943fca5f12df001.jpg')"><span class="gp-label">Restaurante</span></div>
+    <div class="gp img-fallback reveal" style="background-image:url('https://static.wixstatic.com/media/c8bb80_ad4a71eecb4a4619bf8647e972f637db~mv2.jpg')"><span class="gp-label">MAYTO</span></div>
+    <div class="gp tall img-fallback reveal d1" style="background-image:url('https://static.wixstatic.com/media/c8bb80_6374db982fb74eeeb022e4d10e0ab221~mv2.jpg')"><span class="gp-label">Atardecer</span></div>
+    <div class="gp img-fallback reveal d2" style="background-image:url('https://static.wixstatic.com/media/c8bb80_a1f8619e377e49bcace1ad68f6e0eff4~mv2.jpg')"><span class="gp-label">Gastronomía</span></div>
+    <div class="gp img-fallback reveal" style="background-image:url('https://static.wixstatic.com/media/c8bb80_9cba50bd69ec4be6b94a38becb7b9850~mv2.jpg')"><span class="gp-label">El Pacífico</span></div>
+    <div class="gp img-fallback reveal d1" style="background-image:url('https://static.wixstatic.com/media/c8bb80_634cda16cfb34511aaffcca8ece8fa89~mv2.jpg')"><span class="gp-label">Playa</span></div>
+    <div class="gp wide img-fallback reveal d2" style="background-image:url('https://static.wixstatic.com/media/c8bb80_86091e2c7ee24008a790b1a6fee8625c~mv2.jpg')"><span class="gp-label">Playa privada · MAYTO</span></div>
+    <div class="gp img-fallback reveal" style="background-image:url('https://static.wixstatic.com/media/c8bb80_d3540973e03546e5801cb5d4ff6cf0fc~mv2.jpg')"><span class="gp-label">Habitaciones</span></div>
+    <div class="gp img-fallback reveal d1" style="background-image:url('https://static.wixstatic.com/media/c8bb80_825aea04141e42ce9f41ca4071f417a1~mv2.jpg')"><span class="gp-label">Vista al mar</span></div>
+    <div class="gp img-fallback reveal d2" style="background-image:url('https://static.wixstatic.com/media/c8bb80_dd8b58b5affe4cc5bf19db516776d559~mv2.jpg')"><span class="gp-label">Naturaleza virgen</span></div>
+  </div>
+</section>
+
+<!-- ════════ PROBLEMA ════════ -->
+<div class="wave-sep" style="background:var(--deep)"><svg viewBox="0 0 1440 55" preserveAspectRatio="none"><path d="M0,28 C360,55 1080,0 1440,28 L1440,55 L0,55Z" fill="var(--ink)"/></svg></div>
+<section id="problema" class="section">
+  <div class="container">
+    <div class="prob-grid">
+      <div class="prob-left reveal">
+        <span class="label-tag">El problema</span>
+        <h2>Puerto Vallarta ya no se siente como <span class="grad-gold">escapada</span></h2>
+        <p>Las vacaciones dejaron de ser descanso. Playas saturadas, ruido, filas y experiencias genéricas para las masas.</p>
+        <p>La mayoría de hoteles venden habitaciones.<br><strong style="color:var(--pearl);font-weight:500">MAYTO diseña experiencias.</strong></p>
+        <div class="prob-quote">Aquí todavía existe algo que ya casi no encuentras: silencio, naturaleza y privacidad real.</div>
+      </div>
+      <div class="chaos-grid reveal d2">
+        <div class="chaos-item"><div class="xi">✕</div>Playas saturadas</div>
+        <div class="chaos-item"><div class="xi">✕</div>Ruido constante</div>
+        <div class="chaos-item"><div class="xi">✕</div>Filas interminables</div>
+        <div class="chaos-item"><div class="xi">✕</div>Turismo masivo</div>
+        <div class="chaos-item"><div class="xi">✕</div>Horarios impuestos</div>
+        <div class="chaos-item"><div class="xi">✕</div>Experiencias genéricas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ EXPERIENCIAS ════════ -->
+<div class="wave-sep" style="background:var(--ink)"><svg viewBox="0 0 1440 55" preserveAspectRatio="none"><path d="M0,0 C480,55 960,0 1440,35 L1440,55 L0,55Z" fill="var(--deep)"/></svg></div>
+<section id="experiencias" style="background:var(--deep);padding-top:50px;padding-bottom:0;position:relative;z-index:1">
+  <div class="container"><div class="sec-head reveal"><span class="label-tag">Experiencias</span><div class="gold-rule"></div><h2>El Pacífico <span class="grad-gold">como era antes</span></h2><p>Cada experiencia está diseñada para que te sientas presente, libre y en paz.</p></div></div>
+  <div class="exp-grid">
+    <div class="exp-card tall reveal"><div class="exp-bg" style="background-image:url('https://static.wixstatic.com/media/c8bb80_d8b4214decec4e12aeb0e75b2638bc36~mv2.jpg')"></div><div class="exp-ov"></div><div class="exp-content"><span class="exp-pill">✦ Estrella</span><span class="exp-icon">🐢</span><h3>Liberación de Tortugas</h3><p>Uno de los momentos más profundos del Pacífico mexicano. Una experiencia que no olvidarás jamás.</p></div></div>
+    <div class="exp-card reveal d1"><div class="exp-bg" style="background-image:url('https://static.wixstatic.com/media/c8bb80_9cba50bd69ec4be6b94a38becb7b9850~mv2.jpg')"></div><div class="exp-ov"></div><div class="exp-content"><span class="exp-icon">🎣</span><h3>Pesca y Aventura</h3><p>Experiencias privadas diseñadas según lo que quieres vivir.</p></div></div>
+    <div class="exp-card reveal d2"><div class="exp-bg" style="background-image:url('https://static.wixstatic.com/media/c8bb80_86091e2c7ee24008a790b1a6fee8625c~mv2.jpg')"></div><div class="exp-ov"></div><div class="exp-content"><span class="exp-icon">🌊</span><h3>9 km de Playa Virgen</h3><p>Sin ruido. Sin multitudes. Sin prisas.</p></div></div>
+    <div class="exp-card reveal"><div class="exp-bg" style="background-image:url('https://static.wixstatic.com/media/c8bb80_ad4a71eecb4a4619bf8647e972f637db~mv2.jpg')"></div><div class="exp-ov"></div><div class="exp-content"><span class="exp-icon">🐾</span><h3>PET Friendly Real</h3><p>Tu mascota es bienvenida en la playa y todas las áreas.</p></div></div>
+    <div class="exp-card reveal d1"><div class="exp-bg" style="background-image:url('https://static.wixstatic.com/media/c8bb80_a47f49c97a00406e91dc9943fca5f12df001.jpg')"></div><div class="exp-ov"></div><div class="exp-content"><span class="exp-icon">🍽️</span><h3>Gastronomía frente al Mar</h3><p>Sabores locales con el océano como telón de fondo.</p></div></div>
+    <div class="exp-card reveal d2"><div class="exp-bg" style="background-image:url('https://static.wixstatic.com/media/c8bb80_6374db982fb74eeeb022e4d10e0ab221~mv2.jpg')"></div><div class="exp-ov"></div><div class="exp-content"><span class="exp-icon">✨</span><h3>Servicio Personalizado</h3><p>Cada estancia se adapta a ti. No al revés.</p></div></div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band reveal">
+  <div class="cta-band-bg"></div><div class="cta-band-ov"></div>
+  <div class="cta-band-inner container">
+    <span class="label-tag">¿Listo?</span><div class="gold-rule"></div>
+    <h2 style="margin-top:18px">¿Listo para vivir el Pacífico<br><span class="grad-gold">de otra manera?</span></h2>
+    <div class="cta-btns">
+      <a href="https://wa.me/523312809285?text=Hola%2C%20me%20interesa%20reservar%20en%20Hotel%20MAYTO.%20%C2%BFTienen%20disponibilidad%3F" target="_blank" class="btn btn-gold">Reserva por WhatsApp →</a>
+      <a href="#faq" class="btn btn-outline">Tengo preguntas</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ DIFERENCIADOR ════════ -->
+<div class="wave-sep" style="background:var(--surface)"><svg viewBox="0 0 1440 55" preserveAspectRatio="none"><path d="M0,30 C480,55 960,0 1440,30 L1440,55 L0,55Z" fill="var(--ink)"/></svg></div>
+<section id="diferenciador" class="section">
+  <div class="container">
+    <div class="sec-head reveal"><span class="label-tag">Diferencia</span><div class="gold-rule"></div><h2>No somos un hotel <span class="grad-gold">tradicional</span></h2></div>
+    <div class="dif-grid">
+      <div class="dif-card dif-bad reveal"><span class="dif-lbl">Hoteles comunes</span><div class="dif-row"><div class="dif-ico bad-i">—</div><p>Compiten por tener más huéspedes</p></div><div class="dif-row"><div class="dif-ico bad-i">—</div><p>Buscan llenar la playa de gente</p></div><div class="dif-row"><div class="dif-ico bad-i">—</div><p>Venden paquetes genéricos</p></div><div class="dif-row"><div class="dif-ico bad-i">—</div><p>Te asignan una habitación numerada</p></div></div>
+      <div class="dif-card dif-good reveal d2"><span class="dif-lbl">Hotel MAYTO</span><div class="dif-row"><div class="dif-ico good-i">✓</div><p>Compite por darte más paz y privacidad</p></div><div class="dif-row"><div class="dif-ico good-i">✓</div><p>Busca que la playa se sienta tuya</p></div><div class="dif-row"><div class="dif-ico good-i">✓</div><p>Diseña cada estancia desde cero</p></div><div class="dif-row"><div class="dif-ico good-i">✓</div><p>Te crea una experiencia a tu medida</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ BENEFICIOS ════════ -->
+<div class="wave-sep" style="background:var(--ink)"><svg viewBox="0 0 1440 55" preserveAspectRatio="none"><path d="M0,38 C360,0 1080,55 1440,18 L1440,55 L0,55Z" fill="var(--deep)"/></svg></div>
+<section id="beneficios" class="section" style="background:var(--deep)">
+  <div class="container">
+    <div class="ben-layout">
+      <div class="ben-photo reveal"></div>
+      <div class="reveal d2">
+        <span class="label-tag">Cómo se siente</span>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.4rem);font-weight:300;line-height:1.15;margin:16px 0 36px">Así se siente estar en <span class="grad-gold">MAYTO</span></h2>
+        <ul class="ben-list">
+          <li class="ben-item"><span class="ben-num">01</span>Despierta viendo el océano, no tráfico.</li>
+          <li class="ben-item"><span class="ben-num">02</span>Camina kilómetros de playa sin interrupciones.</li>
+          <li class="ben-item"><span class="ben-num">03</span>Cena con el sonido del mar, no ruido de ciudad.</li>
+          <li class="ben-item"><span class="ben-num">04</span>Desconéctate sin irte al otro lado del mundo.</li>
+          <li class="ben-item"><span class="ben-num">05</span>Reconecta contigo, tu pareja o tu familia.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ HABITACIONES ════════ -->
+<div class="wave-sep" style="background:var(--deep)"><svg viewBox="0 0 1440 55" preserveAspectRatio="none"><path d="M0,28 C480,55 960,0 1440,28 L1440,55 L0,55Z" fill="var(--ink)"/></svg></div>
+<section id="rooms" class="section">
+  <div class="container"><div class="sec-head reveal"><span class="label-tag">Alojamiento</span><div class="gold-rule"></div><h2>Tu refugio <span class="grad-gold">frente al mar</span></h2><p>Habitaciones donde lo único que escuchas es el océano</p></div></div>
+  <div class="rooms-grid">
+    <div class="room-card reveal"><div class="room-bg" style="background-image:url('https://static.wixstatic.com/media/c8bb80_d3540973e03546e5801cb5d4ff6cf0fc~mv2.jpg')"></div><div class="room-ov"></div><div class="room-lbl"><span>Alojamiento</span><h3>Vista al Pacífico</h3></div></div>
+    <div class="room-card reveal d1"><div class="room-bg" style="background-image:url('https://static.wixstatic.com/media/c8bb80_e82c54486e0e4eff905b8a413d7fcafc~mv2.jpg')"></div><div class="room-ov"></div><div class="room-lbl"><span>Confort & Naturaleza</span><h3>Habitación frente al Mar</h3></div></div>
+    <div class="room-card reveal d2"><div class="room-bg" style="background-image:url('https://static.wixstatic.com/media/c8bb80_93dd9e0bb776438b9d8fcf0dd13db0be~mv2.jpg')"></div><div class="room-ov"></div><div class="room-lbl"><span>Privacidad Total</span><h3>Suite MAYTO</h3></div></div>
+  </div>
+</section>
+
+<!-- ════════ PRECIO ════════ -->
+<div class="wave-sep" style="background:var(--ink)"><svg viewBox="0 0 1440 55" preserveAspectRatio="none"><path d="M0,18 C360,55 1080,0 1440,35 L1440,55 L0,55Z" fill="var(--deep)"/></svg></div>
+<section id="precio" class="section" style="background:var(--deep)">
+  <div class="container">
+    <div class="sec-head reveal"><span class="label-tag">Tarifas</span><div class="gold-rule"></div><h2>Elige tu <span class="grad-gold">experiencia</span></h2><p>Todas incluyen acceso a playa virgen, atención personalizada y ambiente PET Friendly</p></div>
+    <div class="precio-wrap reveal">
+      <div class="precio-card">
+        <div class="precio-tier">Estancia Base</div>
+        <div class="precio-val">Consultar</div>
+        <div class="precio-cur">Tarifa según temporada y disponibilidad</div>
+        <div class="precio-desc">Perfecta para conocer MAYTO por primera vez</div>
+        <ul class="precio-inc">
+          <li><div class="pchk">✓</div>Hospedaje frente al mar</li>
+          <li><div class="pchk">✓</div>Atención personalizada</li>
+          <li><div class="pchk">✓</div>Playa virgen privada</li>
+          <li><div class="pchk">✓</div>PET Friendly</li>
+        </ul>
+        <a href="https://wa.me/523312809285?text=Hola%2C%20quiero%20info%20de%20tarifas%20de%20Hotel%20MAYTO" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center">Consultar tarifa</a>
+      </div>
+      <div class="precio-card featured">
+        <div class="precio-tier">Experiencia MAYTO</div>
+        <div class="precio-val">Desde</div>
+        <div class="precio-cur">Incluye actividades y experiencias seleccionadas</div>
+        <div class="precio-desc">La experiencia completa que MAYTO tiene para ofrecerte</div>
+        <ul class="precio-inc">
+          <li><div class="pchk">✓</div>Todo lo de Estancia Base</li>
+          <li><div class="pchk">✓</div>1 Experiencia incluida</li>
+          <li><div class="pchk">✓</div>Liberación de tortugas*</li>
+          <li><div class="pchk">✓</div>Cena privada o pesca</li>
+        </ul>
+        <a href="https://wa.me/523312809285?text=Hola%2C%20quiero%20reservar%20la%20Experiencia%20MAYTO%20completa" target="_blank" class="btn btn-gold" style="width:100%;justify-content:center">Reservar ahora →</a>
+      </div>
+      <div class="precio-card">
+        <div class="precio-tier">Grupo / Retiro</div>
+        <div class="precio-val">A medida</div>
+        <div class="precio-cur">Para grupos, familias o retiros corporativos</div>
+        <div class="precio-desc">Diseñamos tu estancia grupal desde cero</div>
+        <ul class="precio-inc">
+          <li><div class="pchk">✓</div>Exclusividad del hotel</li>
+          <li><div class="pchk">✓</div>Actividades personalizadas</li>
+          <li><div class="pchk">✓</div>Menú especial</li>
+          <li><div class="pchk">✓</div>Coordinador dedicado</li>
+        </ul>
+        <a href="https://wa.me/523312809285?text=Hola%2C%20quiero%20info%20para%20un%20grupo%20en%20Hotel%20MAYTO" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center">Cotizar grupo</a>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:.75rem;margin-top:20px">*Liberación de tortugas disponible según temporada (julio–diciembre) · Precios sujetos a disponibilidad</p>
+  </div>
+</section>
+
+<!-- ════════ TESTIMONIOS ════════ -->
+<div class="wave-sep" style="background:var(--deep)"><svg viewBox="0 0 1440 55" preserveAspectRatio="none"><path d="M0,28 C300,0 800,55 1100,22 L1440,35 L1440,55 L0,55Z" fill="var(--ink)"/></svg></div>
+<section id="testimonios" class="section">
+  <div class="container">
+    <div class="sec-head reveal"><span class="label-tag">Testimonios</span><div class="gold-rule"></div><h2>Quienes vienen a MAYTO, <span class="grad-gold">regresan</span></h2></div>
+    <div class="test-grid">
+      <div class="test-card reveal"><div class="tstar"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div><p class="test-text">"Sentimos que descubrimos un secreto escondido de Jalisco. No queríamos regresar a la ciudad."</p><div class="test-line"></div><span class="test-author">— Pareja desde Guadalajara</span></div>
+      <div class="test-card reveal d1"><div class="tstar"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div><p class="test-text">"La mejor parte fue sentirnos solos frente al mar. Nunca habíamos tenido una playa así para nosotros."</p><div class="test-line"></div><span class="test-author">— Familia desde CDMX</span></div>
+      <div class="test-card reveal d2"><div class="tstar"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div><p class="test-text">"Por fin un lugar realmente PET friendly. Nuestro perro fue tan bienvenido como nosotros."</p><div class="test-line"></div><span class="test-author">— Viajeros desde Monterrey</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ INSTAGRAM ════════ -->
+<div class="wave-sep" style="background:var(--ink)"><svg viewBox="0 0 1440 55" preserveAspectRatio="none"><path d="M0,18 C480,55 960,5 1440,32 L1440,55 L0,55Z" fill="var(--deep)"/></svg></div>
+<section id="instagram" class="section" style="background:var(--deep)">
+  <div class="container">
+    <div class="sec-head reveal"><span class="label-tag">Instagram</span><div class="gold-rule"></div><h2>Síguenos en <span class="grad-gold">@hotelmayto</span></h2><p>Fotos reales de huéspedes y momentos únicos en MAYTO</p></div>
+    <div class="ig-grid reveal">
+      <a href="https://www.instagram.com/hotelmayto/" target="_blank" class="ig-item"><img src="https://static.wixstatic.com/media/c8bb80_ef002392fd134787b2dad266dc47a807~mv2.jpg" alt="MAYTO" loading="lazy" onerror="this.parentElement.style.background='#0A1E2A'"><div class="ig-over"><span class="ig-icon">♥</span></div></a>
+      <a href="https://www.instagram.com/hotelmayto/" target="_blank" class="ig-item"><img src="https://static.wixstatic.com/media/c8bb80_dfaec7eac5384c4983723598ffde4422~mv2.jpg" alt="MAYTO" loading="lazy" onerror="this.parentElement.style.background='#0A1E2A'"><div class="ig-over"><span class="ig-icon">♥</span></div></a>
+      <a href="https://www.instagram.com/hotelmayto/" target="_blank" class="ig-item"><img src="https://static.wixstatic.com/media/c8bb80_81e7dc2c6949447a8a395dc44a2ea49f~mv2.jpg" alt="MAYTO" loading="lazy" onerror="this.parentElement.style.background='#0A1E2A'"><div class="ig-over"><span class="ig-icon">♥</span></div></a>
+      <a href="https://www.instagram.com/hotelmayto/" target="_blank" class="ig-item"><img src="https://static.wixstatic.com/media/c8bb80_825aea04141e42ce9f41ca4071f417a1~mv2.jpg" alt="MAYTO" loading="lazy" onerror="this.parentElement.style.background='#0A1E2A'"><div class="ig-over"><span class="ig-icon">♥</span></div></a>
+      <a href="https://www.instagram.com/hotelmayto/" target="_blank" class="ig-item"><img src="https://static.wixstatic.com/media/c8bb80_dd8b58b5affe4cc5bf19db516776d559~mv2.jpg" alt="MAYTO" loading="lazy" onerror="this.parentElement.style.background='#0A1E2A'"><div class="ig-over"><span class="ig-icon">♥</span></div></a>
+    </div>
+    <div class="ig-cta reveal"><a href="https://www.instagram.com/hotelmayto/" target="_blank" class="ig-handle">📸 Ver más en @hotelmayto →</a></div>
+  </div>
+</section>
+
+<!-- ════════ MAPA / UBICACIÓN ════════ -->
+<div class="wave-sep" style="background:var(--deep)"><svg viewBox="0 0 1440 55" preserveAspectRatio="none"><path d="M0,35 C360,0 1080,55 1440,20 L1440,55 L0,55Z" fill="var(--ink)"/></svg></div>
+<section id="ubicacion" style="background:var(--ink);position:relative;z-index:1">
+  <div class="ubic-layout">
+    <div class="ubic-map reveal">
+      <iframe src="https://maps.google.com/maps?q=Hotel+Mayto+Cabo+Corrientes+Jalisco+Mexico&t=k&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Hotel MAYTO en Google Maps"></iframe>
+    </div>
+    <div class="ubic-info reveal d2">
+      <span class="label-tag">Cómo llegar</span>
+      <h2>A solo <span class="grad-gold">2 horas</span> de Puerto Vallarta</h2>
+      <div class="route-item">
+        <div class="route-icon">✈️</div>
+        <div class="route-text"><strong>Desde Puerto Vallarta (PVR)</strong><span>2 hrs en coche · Ruta por El Tuito</span></div>
+      </div>
+      <div class="route-item">
+        <div class="route-icon">🚗</div>
+        <div class="route-text"><strong>Desde Guadalajara</strong><span>4.5 hrs · Autopista GDL-PVR + carretera costera</span></div>
+      </div>
+      <div class="route-item">
+        <div class="route-icon">📍</div>
+        <div class="route-text"><strong>Dirección exacta</strong><span>Estrella del Mar #45, Mayto, Cabo Corrientes, Jalisco</span></div>
+      </div>
+      <div class="route-item">
+        <div class="route-icon">📱</div>
+        <div class="route-text"><strong>¿Necesitas indicaciones?</strong><span>Te mandamos la ruta por WhatsApp al confirmar</span></div>
+      </div>
+      <a href="https://wa.me/523312809285?text=Hola%2C%20necesito%20indicaciones%20para%20llegar%20al%20Hotel%20MAYTO" target="_blank" class="btn btn-gold" style="margin-top:28px;width:fit-content">Pedir indicaciones →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ OFERTA ════════ -->
+<div class="wave-sep" style="background:var(--ink)"><svg viewBox="0 0 1440 55" preserveAspectRatio="none"><path d="M0,22 C360,55 1080,0 1440,30 L1440,55 L0,55Z" fill="var(--deep)"/></svg></div>
+<section id="oferta" class="section" style="background:var(--deep)">
+  <div class="container">
+    <div class="sec-head reveal"><span class="label-tag">Tu escapada</span><div class="gold-rule"></div><h2>Tu próxima escapada <span class="grad-gold">empieza aquí</span></h2></div>
+    <div class="oferta-layout">
+      <div class="inc-box reveal"><span class="inc-title">Qué incluye</span><div class="inc-row"><div class="inc-chk">✓</div>Hospedaje frente al mar</div><div class="inc-row"><div class="inc-chk">✓</div>Atención personalizada 24/7</div><div class="inc-row"><div class="inc-chk">✓</div>Acceso a todas las experiencias MAYTO</div><div class="inc-row"><div class="inc-chk">✓</div>Ambiente genuinamente PET Friendly</div><div class="inc-row"><div class="inc-chk">✓</div>9 km de playa prácticamente privada</div></div>
+      <div class="bonus-card reveal d2"><span class="bonus-tag">🎁 Oferta especial</span><h3>Reserva hoy y recibe una experiencia MAYTO incluida</h3><p>Liberación de tortugas, cena privada frente al mar o experiencia de pesca. Sin costo adicional. Sin condiciones escondidas.</p></div>
+    </div>
+    <p class="oferta-tagline reveal">No necesitas viajar lejos para desconectarte de todo.<br>MAYTO está más cerca de lo que crees — y mucho más lejos del ruido de lo normal.</p>
+    <div style="text-align:center" class="reveal">
+      <a href="https://wa.me/523312809285?text=Hola%2C%20quiero%20reservar%20en%20Hotel%20MAYTO%20y%20aprovechar%20la%20experiencia%20incluida" target="_blank" class="btn btn-gold" style="font-size:.88rem;padding:19px 52px">Reservar y reclamar mi experiencia →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FAQ ════════ -->
+<div class="wave-sep" style="background:var(--deep)"><svg viewBox="0 0 1440 55" preserveAspectRatio="none"><path d="M0,35 C480,0 960,55 1440,20 L1440,55 L0,55Z" fill="var(--ink)"/></svg></div>
+<section id="faq" class="section">
+  <div class="container">
+    <div class="sec-head reveal"><span class="label-tag">FAQ</span><div class="gold-rule"></div><h2>Todo lo que <span class="grad-gold">necesitas saber</span></h2></div>
+    <div class="faq-inner">
+      <details class="reveal"><summary>¿Cómo llegar desde Puerto Vallarta? <span class="faq-ico">+</span></summary><p>MAYTO está a 2 horas de Puerto Vallarta por la carretera costera vía El Tuito. Al confirmar tu reserva te enviamos indicaciones detalladas por WhatsApp y opciones de traslado privado. Tel: (322) 120-6206.</p></details>
+      <details class="reveal"><summary>¿Se aceptan mascotas? <span class="faq-ico">+</span></summary><p>¡Sí! MAYTO es genuinamente PET Friendly. Tu mascota es bienvenida en las áreas comunes y la playa. Solo pedimos mantenerla bajo control para respetar la naturaleza virgen del lugar.</p></details>
+      <details class="reveal"><summary>¿Qué actividades incluye la estancia? <span class="faq-ico">+</span></summary><p>Liberación de tortugas (jul–dic), pesca deportiva, caminatas por playa virgen, kayak, snorkel y más. Todas se personalizan según lo que quieras vivir.</p></details>
+      <details class="reveal"><summary>¿La playa es privada? <span class="faq-ico">+</span></summary><p>Las playas mexicanas son de uso público por ley, pero la ubicación remota de MAYTO hace que en la práctica la playa esté casi siempre solo para los huéspedes. Privacidad real, no excluyente.</p></details>
+      <details class="reveal"><summary>¿Es ideal para parejas o también para familias? <span class="faq-ico">+</span></summary><p>Para ambas. MAYTO se adapta: escapadas románticas, viajes familiares con niños y mascotas, o retiros grupales. Cuéntanos qué buscas y diseñamos tu estancia.</p></details>
+      <details class="reveal"><summary>¿Cuál es el precio por noche? <span class="faq-ico">+</span></summary><p>Las tarifas varían según temporada, tipo de habitación y experiencias incluidas. Escríbenos por WhatsApp y te damos disponibilidad y precios actualizados en minutos.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ CIERRE FINAL ════════ -->
+<div class="wave-sep" style="background:var(--ink)"><svg viewBox="0 0 1440 55" preserveAspectRatio="none"><path d="M0,28 C360,55 1080,0 1440,28 L1440,55 L0,55Z" fill="var(--deep)"/></svg></div>
+<section id="cierre">
+  <div class="cierre-bg"></div><div class="cierre-ov"></div>
+  <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+  <div class="cierre-waves">
+    <div class="wl wl1" style="position:relative;height:80px"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,50 C360,20 720,80 1080,42 C1260,22 1380,65 1440,50 L1440,80 L0,80Z" fill="rgba(0,197,184,0.12)"/><path d="M1440,50 C1800,20 2160,80 2520,42 C2700,22 2820,65 2880,50 L2880,80 L1440,80Z" fill="rgba(0,197,184,0.12)"/></svg></div>
+  </div>
+  <div class="cierre-inner reveal">
+    <span class="label-tag">El momento es ahora</span>
+    <h2 style="margin-top:28px">Puerto Vallarta ya lo conoce<br>todo el mundo.<br><em style="font-style:italic;background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">MAYTO todavía se siente<br>descubierto por pocos.</em></h2>
+    <p class="sub">Escápate antes de que todos lo sepan.</p>
+    <div class="cierre-btns">
+      <a href="https://wa.me/523312809285?text=Hola%2C%20quiero%20reservar%20en%20Hotel%20MAYTO" target="_blank" class="btn btn-gold" style="font-size:.88rem;padding:19px 50px">Reserva ahora tu estancia en MAYTO</a>
+      <a href="https://wa.me/523312809285?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Hotel%20MAYTO" target="_blank" class="btn btn-outline">Habla con un asesor →</a>
+    </div>
+    <div class="trust-row">
+      <div class="titem"><div class="tdot"></div>PET Friendly</div>
+      <div class="titem"><div class="tdot"></div>9 km playa virgen</div>
+      <div class="titem"><div class="tdot"></div>100% personalizado</div>
+      <div class="titem"><div class="tdot"></div>2h de Puerto Vallarta</div>
+      <div class="titem"><div class="tdot"></div>★ 4.8 Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY BAR -->
+<div id="sticky">
+  <div class="sleft">
+    <div class="sdot"></div>
+    <div><div class="sname">Hotel MAYTO</div><div class="sdesc">9 km de playa virgen · Cabo Corrientes, Jalisco</div></div>
+  </div>
+  <a href="https://wa.me/523312809285?text=Hola%2C%20quiero%20reservar%20en%20Hotel%20MAYTO" target="_blank" class="btn btn-gold s-btn">Reservar ahora →</a>
+</div>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/523312809285?text=Hola%2C%20me%20interesa%20Hotel%20MAYTO%20%F0%9F%8C%8A" target="_blank" id="wa-btn" title="Reserva por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// PRELOADER
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('preloader').classList.add('done') }, 1800);
+});
+
+// STICKY
+const heroEl = document.getElementById('hero');
+const stickyEl = document.getElementById('sticky');
+new IntersectionObserver(([e]) => stickyEl.classList.toggle('show', !e.isIntersecting), {threshold:.05}).observe(heroEl);
+
+// SCROLL REVEAL
+const ro = new IntersectionObserver(
+  entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in') }),
+  {threshold:.07, rootMargin:'0px 0px -40px 0px'}
+);
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// PARALLAX HERO
+const heroBg = document.querySelector('.hero-photo-fallback');
+const heroContent = document.querySelector('.hero-content');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if(y < window.innerHeight * 1.2){
+    if(heroBg) heroBg.style.transform = `scale(1.05) translateY(${y * 0.12}px)`;
+    if(heroContent){ heroContent.style.transform = `translateY(${y * 0.28}px)`; heroContent.style.opacity = 1 - y / (window.innerHeight * 0.72); }
+  }
+}, {passive:true});
+
+// 3D TILT
+document.querySelectorAll('.exp-card,.test-card,.dif-card,.room-card,.precio-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5;
+    const y = (e.clientY - r.top) / r.height - .5;
+    card.style.transform = `perspective(800px) rotateX(${-y*6}deg) rotateY(${x*6}deg)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = '' });
+});
+
+// IMAGE FALLBACK
+document.querySelectorAll('.gp').forEach(el => {
+  const url = el.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+  if(url){ const img = new Image(); img.onerror = () => el.style.backgroundImage = 'none'; img.src = url; }
+});
+</script>
+</body>
+</html>
